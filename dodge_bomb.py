@@ -49,6 +49,7 @@ def main():
     辞書ALFA
     飛ぶ方向に従って画像を切り替える
     key=移動量:value=表示する画像
+    関数にする
     """
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
