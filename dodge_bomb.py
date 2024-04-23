@@ -3,7 +3,6 @@ import random
 import sys
 import pygame as pg
 
-
 WIDTH, HEIGHT = 1600, 900
 
 
@@ -13,7 +12,6 @@ DELTA = {  # 移動量辞書（押下キー：移動量タプル）
     pg.K_LEFT: (-5, 0),
     pg.K_RIGHT: (+5, 0)
 }
-
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,6 +29,7 @@ def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     bg_img = pg.image.load("fig/pg_bg.jpg") 
+
     kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
     kk2_img = pg.transform.flip(kk_img, True, False)
 
@@ -51,6 +50,7 @@ def main():
     key=移動量:value=表示する画像
     関数にする
     """
+
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
 
@@ -63,11 +63,13 @@ def main():
 
     clock = pg.time.Clock()
     tmr = 0
+
     accs = [a for a in range(1, 11)]
     """
     追加機能2
     加速度のリストを生成
     """
+
 
     while True:
         for event in pg.event.get():
@@ -86,9 +88,21 @@ def main():
             for i in ALFA.items():
                 if (k,v):
                     kk_img = i
+
             """
             移動量に対して画像を決める
             """
+
+        
+        # if key_lst[pg.K_UP]:
+        #     sum_mv[1] -= 5
+        # if key_lst[pg.K_DOWN]:
+        #     sum_mv[1] += 5
+        # if key_lst[pg.K_LEFT]:
+        #     sum_mv[0] -= 5
+        # if key_lst[pg.K_RIGHT]:
+        #     sum_mv[0] += 5
+
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True,True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
